@@ -1,9 +1,17 @@
 const fs = require("fs");
+const path = require("path");
 
-const tasks = "../models/example.json";
+const tasksPath = path.join(__dirname, "../models/data.json");
+
+const tasks = [];
 
 const add = (item) => {
-  console.log(`Item added: ${tasks}`);
+  if (fs.existsSync(tasksPath)) {
+    return;
+  } else {
+    fs.writeFileSync(tasksPath, JSON.stringify(tasks));
+  }
+  tasks.push(item);
 };
 
 module.exports = add;
