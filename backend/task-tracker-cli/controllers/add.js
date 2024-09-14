@@ -25,6 +25,7 @@ const add = (item) => {
 
   tasks.push(newTask);
   fs.writeFileSync(tasksPath, JSON.stringify(tasks));
+  console.log(`Task added successfully (ID: ${newTask.id})`);
 };
 
 module.exports = add;
