@@ -1,12 +1,5 @@
 [
   {
-    "id": 1,
-    "description": "altceva",
-    "status": "pending",
-    "createdAt": "2024-09-14T13:04:48.896Z",
-    "updatedAt": "2024-09-14T16:56:25.711Z"
-  },
-  {
     "id": 2,
     "description": "ce se intampla",
     "status": "pending",
@@ -25,6 +18,20 @@
     "description": "item",
     "status": "pending",
     "createdAt": "2024-09-14T16:26:04.303Z",
+    "updatedAt": ""
+  },
+  {
+    "id": 5,
+    "description": "item 2",
+    "status": "pending",
+    "createdAt": "2024-09-14T19:00:50.059Z",
+    "updatedAt": ""
+  },
+  {
+    "id": 5,
+    "description": "vreau mere",
+    "status": "pending",
+    "createdAt": "2024-09-14T19:24:57.929Z",
     "updatedAt": ""
   }
 ]

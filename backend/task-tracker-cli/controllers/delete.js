@@ -3,7 +3,7 @@ const path = require("path");
 
 const tasksPath = path.join(__dirname, "../models/data.json");
 
-const update = (id, newDescription) => {
+const deleted = (id) => {
   let tasks = [];
 
   if (fs.existsSync(tasksPath)) {
@@ -13,15 +13,12 @@ const update = (id, newDescription) => {
 
   const taskIndex = tasks.findIndex((task) => task.id === parseInt(id));
 
-  if (taskIndex === -1) {
-    console.log("Task not found");
+  if (taskIndex !== -1) {
+    tasks.splice(taskIndex, 1);
+    fs.writeFileSync(tasksPath, JSON.stringify(tasks, null, 2));
+    return true;
   }
-
-  tasks[taskIndex].description = newDescription;
-  tasks[taskIndex].updatedAt = new Date().toISOString();
-
-  fs.writeFileSync(tasksPath, JSON.stringify(tasks, null, 2));
-  console.log(`Task (ID: ${id}) updated successfully`);
+  return false;
 };
 
-module.exports = update;
+module.exports = deleted;
