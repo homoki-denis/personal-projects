@@ -3,15 +3,28 @@ const path = require("path");
 
 const tasksPath = path.join(__dirname, "../models/data.json");
 
-const tasks = [];
-
 const add = (item) => {
-  if (fs.existsSync(tasksPath)) {
-    return;
-  } else {
-    fs.writeFileSync(tasksPath, JSON.stringify(tasks));
+  let tasks = [];
+
+  try {
+    if (fs.existsSync(tasksPath)) {
+      const fileContent = fs.readFileSync(tasksPath, "utf-8");
+      tasks = JSON.parse(fileContent);
+    }
+  } catch (error) {
+    throw new Error(error);
   }
-  tasks.push(item);
+
+  const newTask = {
+    id: tasks.length + 1,
+    description: item,
+    status: "pending",
+    createdAt: new Date().toISOString(),
+    updatedAt: "",
+  };
+
+  tasks.push(newTask);
+  fs.writeFileSync(tasksPath, JSON.stringify(tasks));
 };
 
 module.exports = add;
